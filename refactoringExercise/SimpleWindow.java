@@ -19,7 +19,7 @@ import javax.swing.KeyStroke;
 
 
 
-public class SimpleWindow  {
+public class SimpleWindow implements UI{
 	private JFrame window;
 	private JTextArea text;
 	private JTextField inString;

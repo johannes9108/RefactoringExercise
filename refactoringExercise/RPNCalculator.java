@@ -12,17 +12,17 @@ import commands.SubtractionCommand;
 
 public class RPNCalculator {
 
-	private static SimpleWindow gw = new SimpleWindow("Calculator");
+	private static UI gw = new SimpleWindow("Calculator");
 	private static DoubleStack stack = new DoubleStack();
 
 	public static void main(String[] args) {
 		while (true){
 			
-			// This section clears the prompt
+			// This section displays the application state
 			displayApplicationState();
 			
 			// This section receives the inputted String and cleans it and converts it into a command
-			String input = cleanInputString();
+			String input = whiteSpaceCleanString();
 			Command command = determineCommand(input.charAt(0));
 			
 			// Execution of the generated command
@@ -52,7 +52,7 @@ public class RPNCalculator {
 		}
 	}
 
-	private static String cleanInputString() {
+	private static String whiteSpaceCleanString() {
 		String input = gw.getString().trim();
 		if (input.equals("")) {
 			input = " ";

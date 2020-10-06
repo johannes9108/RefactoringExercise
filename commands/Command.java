@@ -1,10 +1,10 @@
 package commands;
 
 import refactoringExercise.DoubleStack;
-import refactoringExercise.SimpleWindow;
+import refactoringExercise.UI;
 
 public interface Command {
 	
-	void execute(String input,DoubleStack stack, SimpleWindow gw);
+	void execute(String input,DoubleStack stack, UI gw);
 
 }
