@@ -1,27 +1,27 @@
 
 public class RPNCalculator {
 
+	private static SimpleWindow gw = new SimpleWindow("Calculator");
+	private static DoubleStack stack = new DoubleStack();
 
 	public static void main(String[] args) {
-		SimpleWindow gw = new SimpleWindow("Calculator");
-		DoubleStack stack = new DoubleStack();
 		while (true){
 			
 			// This section clears the prompt
-			displayApplicationState(gw, stack);
+			displayApplicationState();
 			
 			// This section receives the inputted String and cleans it and converts it into a command
-			String input = cleanInputString(gw);
+			String input = cleanInputString();
 			char command = input.charAt(0);
 			
 			// The given command determines between the following operations.
-			determineOperation(gw, stack, input, command);		
+			determineOperation(input, command);		
 			
 		}
 
 	}
 
-	private static void determineOperation(SimpleWindow gw, DoubleStack stack, String input, char command) {
+	private static void determineOperation(String input, char command) {
 		if (Character.isDigit(command)){
 			double value = Double.parseDouble(input);
 			stack.push(value);
@@ -52,7 +52,7 @@ public class RPNCalculator {
 		}
 	}
 
-	private static String cleanInputString(SimpleWindow gw) {
+	private static String cleanInputString() {
 		String input = gw.getString().trim();
 		if (input.equals("")) {
 			input = " ";
@@ -60,7 +60,7 @@ public class RPNCalculator {
 		return input;
 	}
 
-	private static void displayApplicationState(SimpleWindow gw, DoubleStack stack) {
+	private static void displayApplicationState() {
 		if (stack.depth()==0) {
 			gw.clear();
 			gw.addString("[empty]\n");	
