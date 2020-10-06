@@ -1,3 +1,14 @@
+package refactoringExercise;
+
+import commands.AdditionCommand;
+import commands.ClearCommand;
+import commands.Command;
+import commands.DivisionCommand;
+import commands.IlleagalCommand;
+import commands.MultiplicationCommand;
+import commands.NewInputCommand;
+import commands.QuitCommand;
+import commands.SubtractionCommand;
 
 public class RPNCalculator {
 
@@ -12,43 +23,32 @@ public class RPNCalculator {
 			
 			// This section receives the inputted String and cleans it and converts it into a command
 			String input = cleanInputString();
-			char command = input.charAt(0);
+			Command command = determineCommand(input.charAt(0));
 			
-			// The given command determines between the following operations.
-			determineOperation(input, command);		
+			// Execution of the generated command
+			command.execute(input, stack, gw);
 			
 		}
 
 	}
 
-	private static void determineOperation(String input, char command) {
+	private static Command determineCommand(char command) {
 		if (Character.isDigit(command)){
-			double value = Double.parseDouble(input);
-			stack.push(value);
+			return new NewInputCommand();
 		} else if(command == '+') {
-			double v1 = stack.pop();
-			double v2 = stack.pop();
-			stack.push(v1+v2);
+			return new AdditionCommand();
 		} else if(command == '-') {
-			double v1 = stack.pop();
-			double v2 = stack.pop();
-			stack.push(v2-v1);
+			return new SubtractionCommand();
 		} else if(command == '*') {
-			double v1 = stack.pop();
-			double v2 = stack.pop();
-			stack.push(v1*v2);
+			return new MultiplicationCommand();
 		} else if(command == '/') {
-			double v1 = stack.pop();
-			double v2 = stack.pop();
-			stack.push(v2/v1);	
+			return new DivisionCommand();
 		} else if(command == 'c') {
-			stack.clear();
-			gw.clear();
+			return new ClearCommand();
 		} else if(command == 'q') {
-			stack.clear();
-			gw.exit();
+			return new QuitCommand();
 		}else {
-			gw.addString("Illegal command\n");
+			return new IlleagalCommand();
 		}
 	}
 

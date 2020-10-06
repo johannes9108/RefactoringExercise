@@ -1,7 +1,6 @@
+package refactoringExercise;
 import java.util.Arrays;
-
 import javax.swing.JOptionPane;
-
 
 public class DoubleStack {
 	private double[] stackArray;
