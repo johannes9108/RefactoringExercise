@@ -1,10 +1,12 @@
 package commands;
 
+import java.util.Stack;
+
 import refactoringExercise.DoubleStack;
-import refactoringExercise.UI;
+import ui.UI;
 
 public interface Command {
 	
-	void execute(String input,DoubleStack stack, UI ui);
+	void execute(String input,Stack<Double> stack, UI ui);
 
 }

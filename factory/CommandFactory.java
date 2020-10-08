@@ -6,7 +6,7 @@ import commands.Command;
 import commands.DivisionCommand;
 import commands.IlleagalCommand;
 import commands.MultiplicationCommand;
-import commands.NewInputCommand;
+import commands.DigitCommand;
 import commands.QuitCommand;
 import commands.SubtractionCommand;
 
@@ -14,7 +14,7 @@ public interface CommandFactory {
 
 	public static Command makeCommand(char command) {
 		if (Character.isDigit(command))
-			return new NewInputCommand();
+			return new DigitCommand();
 
 		switch (command) {
 		case '+':
