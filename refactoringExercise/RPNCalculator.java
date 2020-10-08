@@ -1,19 +1,11 @@
 package refactoringExercise;
 
-import commands.AdditionCommand;
-import commands.ClearCommand;
 import commands.Command;
-import commands.DivisionCommand;
-import commands.IlleagalCommand;
-import commands.MultiplicationCommand;
-import commands.NewInputCommand;
-import commands.QuitCommand;
-import commands.SubtractionCommand;
 import factory.CommandFactory;
 
 public class RPNCalculator {
 
-	private static UI gw = new SimpleWindow("Calculator");
+	private static UI ui = new SimpleWindow("Calculator");
 	private static DoubleStack stack = new DoubleStack();
 
 	public static void main(String[] args) {
@@ -27,7 +19,7 @@ public class RPNCalculator {
 			Command command = CommandFactory.makeCommand(input.charAt(0));
 			
 			// Execution of the generated command
-			command.execute(input, stack, gw);
+			command.execute(input, stack, ui);
 			
 		}
 
@@ -35,7 +27,7 @@ public class RPNCalculator {
 
 
 	private static String whiteSpaceCleanedString() {
-		String input = gw.getString().trim();
+		String input = ui.getString().trim();
 		if (input.equals("")) {
 			input = " ";
 		}
@@ -44,13 +36,23 @@ public class RPNCalculator {
 
 	private static void displayApplicationState() {
 		if (stack.depth()==0) {
-			gw.clear();
-			gw.addString("[empty]\n");	
-			gw.addString("Commands: q=quit c=clear + - * / number");
+			displayWhenStackIsEmpty();
 		} else {
-			gw.clear();
-			gw.addString(stack.toString());	
+			displayWhenStackHasValues();	
 		}
+	}
+
+
+	private static void displayWhenStackHasValues() {
+		ui.clear();
+		ui.addString(stack.toString());
+	}
+
+
+	private static void displayWhenStackIsEmpty() {
+		ui.clear();
+		ui.addString("[empty]\n");	
+		ui.addString("Commands: q=quit c=clear + - * / number");
 	}
 
 }
