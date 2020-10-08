@@ -1,5 +1,6 @@
 package Services;
 
+import common.Operation;
 import refactoringExercise.DoubleStack;
 
 public class OperationServiceImpl implements OperationService {
@@ -22,16 +23,16 @@ public class OperationServiceImpl implements OperationService {
         }
     }
 
-    double additionOperation(double number1, double number2){
+    private double additionOperation(double number1, double number2){
         return number1+number2;
     }
-    double subtractionOperation(double number1, double number2){
+    private double subtractionOperation(double number1, double number2){
         return number1-number2;
     }
-    double multiplicationOperation(double number1, double number2){
+    private double multiplicationOperation(double number1, double number2){
         return number1*number2;
     }
-    double divisionOperation(double number1, double number2){
+    private double divisionOperation(double number1, double number2){
         return number1/number2;
     }
 }

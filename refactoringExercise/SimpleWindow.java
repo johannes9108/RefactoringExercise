@@ -20,12 +20,12 @@ import javax.swing.KeyStroke;
 
 
 public class SimpleWindow implements UI{
-	private JFrame window;
-	private JTextArea text;
-	private JTextField inString;
-	private JButton go;
-	private JPanel sPanel;
-	private BlockingQueue<String> mq;
+	private final JFrame window;
+	private final JTextArea text;
+	private final JTextField inString;
+	private final JButton go;
+	private final JPanel sPanel;
+	private final BlockingQueue<String> mq;
 	
 	public SimpleWindow(String title){
 		window = new JFrame(title);

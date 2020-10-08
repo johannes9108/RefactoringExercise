@@ -1,7 +1,6 @@
 package commands;
 
 import refactoringExercise.DoubleStack;
-import refactoringExercise.SimpleWindow;
 import refactoringExercise.UI;
 
 public class ClearCommand implements Command {

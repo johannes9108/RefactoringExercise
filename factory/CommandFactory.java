@@ -1,30 +1,31 @@
 package factory;
 
-import commands.operationCommands.AdditionCommand;
+import calculator.Calculator;
 import commands.ClearCommand;
 import commands.Command;
-import commands.operationCommands.DivisionCommand;
-import commands.IlleagalCommand;
-import commands.operationCommands.MultiplicationCommand;
 import commands.DigitCommand;
+import commands.IlleagalCommand;
+import commands.OperationCommand;
 import commands.QuitCommand;
-import commands.operationCommands.SubtractionCommand;
+import common.OperationMap;
 
-public interface CommandFactory {
+public class CommandFactory {
+	private Calculator calculator;
 
-	public static Command makeCommand(char command) {
+	public CommandFactory(Calculator calculator) {
+		this.calculator = calculator;
+	}
+
+	public Command makeCommand(char command) {
+
 		if (Character.isDigit(command))
 			return new DigitCommand();
 
+		if (OperationMap.getCommandOperationMap().containsKey(Character.toString(command))){
+			return new OperationCommand(calculator, OperationMap.getCommandOperationMap().get(Character.toString(command)));
+		}
+
 		switch (command) {
-		case '+':
-			return new AdditionCommand();
-		case '-':
-			return new SubtractionCommand();
-		case '*':
-			return new MultiplicationCommand();
-		case '/':
-			return new DivisionCommand();
 		case 'c':
 			return new ClearCommand();
 		case 'q':

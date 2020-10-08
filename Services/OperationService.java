@@ -1,7 +1,6 @@
 package Services;
 
-import java.util.Stack;
-
+import common.Operation;
 import refactoringExercise.DoubleStack;
 
 public interface OperationService {
