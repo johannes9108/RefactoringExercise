@@ -6,9 +6,9 @@ import refactoringExercise.UI;
 public class QuitCommand implements Command {
 
 	@Override
-	public void execute(String input, DoubleStack stack, UI gw) {
+	public void execute(String input, DoubleStack stack, UI ui) {
 		stack.clear();
-		gw.exit();
+		ui.exit();
 	}
 
 }

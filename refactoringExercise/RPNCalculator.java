@@ -10,12 +10,8 @@ public class RPNCalculator {
 
 	public static void main(String[] args) {
 		while (true){
-			
-			// This section displays the application state
 			displayApplicationState();
-			
-			// This section receives the inputted String and cleans it and converts it into a command
-			String input = whiteSpaceCleanedString();
+			String input = trimmedInputString();
 			Command command = CommandFactory.makeCommand(input.charAt(0));
 			
 			// Execution of the generated command
@@ -26,7 +22,7 @@ public class RPNCalculator {
 	}
 
 
-	private static String whiteSpaceCleanedString() {
+	private static String trimmedInputString() {
 		String input = ui.getString().trim();
 		if (input.equals("")) {
 			input = " ";

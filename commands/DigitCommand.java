@@ -3,7 +3,7 @@ package commands;
 import refactoringExercise.DoubleStack;
 import refactoringExercise.UI;
 
-public class NewInputCommand implements Command {
+public class DigitCommand implements Command {
 
 	@Override
 	public void execute(String input, DoubleStack stack, UI gw) {

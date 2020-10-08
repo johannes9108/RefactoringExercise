@@ -1,6 +1,7 @@
 package commands;
 
 
+import Services.OperationService;
 import refactoringExercise.DoubleStack;
 import refactoringExercise.UI;
 
@@ -8,9 +9,7 @@ public class AdditionCommand implements Command{
 
 	@Override
 	public void execute(String input, DoubleStack stack, UI gw) {
-		double v1 = stack.pop();
-		double v2 = stack.pop();
-		stack.push(v1+v2);
+
 	}
 
 }
