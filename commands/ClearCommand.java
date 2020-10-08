@@ -1,15 +1,15 @@
 package commands;
 
-import refactoringExercise.DoubleStack;
-import refactoringExercise.SimpleWindow;
-import refactoringExercise.UI;
+import java.util.Stack;
+
+import ui.UI;
 
 public class ClearCommand implements Command {
 
 	@Override
-	public void execute(String input, DoubleStack stack, UI gw) {
+	public void execute(String input, Stack<Double> stack, UI ui) {
 		stack.clear();
-		gw.clear();
+		ui.clear();
 	}
 
 }
