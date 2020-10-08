@@ -9,6 +9,7 @@ import commands.MultiplicationCommand;
 import commands.NewInputCommand;
 import commands.QuitCommand;
 import commands.SubtractionCommand;
+import factory.CommandFactory;
 
 public class RPNCalculator {
 
@@ -22,8 +23,8 @@ public class RPNCalculator {
 			displayApplicationState();
 			
 			// This section receives the inputted String and cleans it and converts it into a command
-			String input = whiteSpaceCleanString();
-			Command command = determineCommand(input.charAt(0));
+			String input = whiteSpaceCleanedString();
+			Command command = CommandFactory.makeCommand(input.charAt(0));
 			
 			// Execution of the generated command
 			command.execute(input, stack, gw);
@@ -32,27 +33,8 @@ public class RPNCalculator {
 
 	}
 
-	private static Command determineCommand(char command) {
-		if (Character.isDigit(command)){
-			return new NewInputCommand();
-		} else if(command == '+') {
-			return new AdditionCommand();
-		} else if(command == '-') {
-			return new SubtractionCommand();
-		} else if(command == '*') {
-			return new MultiplicationCommand();
-		} else if(command == '/') {
-			return new DivisionCommand();
-		} else if(command == 'c') {
-			return new ClearCommand();
-		} else if(command == 'q') {
-			return new QuitCommand();
-		}else {
-			return new IlleagalCommand();
-		}
-	}
 
-	private static String whiteSpaceCleanString() {
+	private static String whiteSpaceCleanedString() {
 		String input = gw.getString().trim();
 		if (input.equals("")) {
 			input = " ";
