@@ -3,7 +3,6 @@ package commands;
 import javax.swing.JOptionPane;
 
 import calculator.Calculator;
-import refactoringExercise.DoubleStack;
 import refactoringExercise.UI;
 
 public class IlleagalCommand implements Command {

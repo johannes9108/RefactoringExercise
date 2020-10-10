@@ -7,31 +7,35 @@ import refactoringExercise.UI;
 
 public class OperationCommand implements Command {
 
-    private Calculator calculator;
-    private Operation operation;
+	private Operation operation;
 
-    public OperationCommand(Calculator calculator, Operation operation) {
-        this.calculator = calculator;
-        this.operation = operation;
-    }
+	public OperationCommand(Operation operation) {
+		this.operation = operation;
+	}
 
-    @Override
-    public void execute(String input, UI ui) {
-       operationResult(operation);
-    }
+	@Override
+	public void execute(UI ui, Calculator calculator) {
+		operationResult(operation, calculator);
+	}
 
-    private double operationResult(Operation operation) {
-        switch (operation) {
-            case ADDITION:
-                return calculator.addition();
-            case SUBTRACTION:
-                return calculator.subtraction();
-            case MULTIPLICATION:
-                return calculator.multiplication();
-            case DIVISION:
-                return calculator.division();
-            default:
-                return 0;
-        }
-    }
+	private void operationResult(Operation operation, Calculator calculator) {
+		System.out.println("Operation: " + operation);
+		switch (operation) {
+		case ADDITION:
+			calculator.addition();
+			break;
+		case SUBTRACTION:
+			calculator.subtraction();
+			break;
+		case MULTIPLICATION:
+			calculator.multiplication();
+			break;
+		case DIVISION:
+			calculator.division();
+			break;
+		default:
+			break;
+
+		}
+	}
 }

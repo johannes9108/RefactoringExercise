@@ -8,7 +8,7 @@ public class ClearCommand implements Command {
 
 	@Override
 	public void execute(UI ui,Calculator calculator) {
-//		stack.clear();
+		calculator.clearStack();
 		ui.clear();
 	}
 

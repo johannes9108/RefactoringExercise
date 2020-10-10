@@ -18,5 +18,5 @@ public interface UI {
         return input;
     }
 
-	String getDigit();
+
 }

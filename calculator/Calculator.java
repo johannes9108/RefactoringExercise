@@ -6,10 +6,12 @@ public interface Calculator {
 	double pop();
 	double stackSize();
 	String stackString();
+	void clearStack();
 	
-    double addition();
-    double subtraction();
-    double multiplication();
-    double division();
+    void addition();
+    void subtraction();
+    void multiplication();
+    void division();
+	
 
 }

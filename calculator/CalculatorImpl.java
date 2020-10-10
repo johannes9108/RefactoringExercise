@@ -10,42 +10,55 @@ public class CalculatorImpl implements Calculator {
 	
 
     @Override
-    public double addition() {
+    public void addition() {
+    	double term1 = 0;
     	try {
-    		return stack.pop() + stack.pop();
+    		term1 = stack.pop();
+    		double res = term1 + stack.pop();
+    		stack.push(res);
     	}catch(EmptyStackException e) {
-    		return 0;
+    		stack.push(term1);
     	}
     	
         
     }
 
     @Override
-    public double subtraction() {
+    public void subtraction() {
+    	double term1 = 0;
     	try {
-    		return stack.pop() - stack.pop();
+    		term1=stack.pop();
+    		double res = term1 - stack.pop();
+    		stack.push(res);
     		}catch(EmptyStackException e) {
-    		return 0;
+    		stack.push(term1);
     	}
         
     }
 
     @Override
-    public double multiplication() {
+    public void multiplication() {
+    	double factor1 = 0;
     	try {
-    		return stack.pop() * stack.pop();
+    		factor1=stack.pop();
+    		double res = factor1 * stack.pop();
+    		stack.push(res);
     	}catch(EmptyStackException e) {
-    		return 0;
+    		stack.push(factor1);
     	}
         
     }
 
     @Override
-    public double division() {
+    public void division() {
+    	double dividend = 1;
     	try {
-    		return stack.pop() / stack.pop();
+    		dividend = stack.pop();
+    		double res = dividend / stack.pop();
+    		stack.push(res);
     	}catch(EmptyStackException e) {
-    		return 0;
+    		
+    		stack.push(dividend);
     	}
     }
 
@@ -68,5 +81,10 @@ public class CalculatorImpl implements Calculator {
 	@Override
 	public String stackString() {
 		return stack.toString();
+	}
+
+	@Override
+	public void clearStack() {
+		stack.clear();
 	}
 }

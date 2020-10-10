@@ -17,12 +17,12 @@ public class RPNCalculatorController {
     }
 
     void init() {
-        CommandFactory commandFactory = new CommandFactory(calculator);
+        
         while (true) {
             displayApplicationState();
             String input = ui.trimmedInputString();
-            Command command = commandFactory.makeCommand(input.charAt(0));
-            command.execute(calculator,ui);
+            Command command = CommandFactory.makeCommand(input);
+            command.execute(ui,calculator);
         }
 
     }

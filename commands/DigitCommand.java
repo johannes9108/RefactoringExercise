@@ -16,7 +16,7 @@ public class DigitCommand implements Command {
 
 	@Override
 	public void execute(UI ui,Calculator calculator) {
-		stack.push(digit);
+		calculator.push(digit);
 	}
 
 }

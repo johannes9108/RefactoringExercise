@@ -8,24 +8,23 @@ import commands.IlleagalCommand;
 import commands.OperationCommand;
 import commands.QuitCommand;
 import common.OperationMap;
+import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 
 public class CommandFactory {
-	private Calculator calculator;
+	private static final String digitPattern = "\\d+";
 
-	public CommandFactory(Calculator calculator) {
-		this.calculator = calculator;
-	}
+	public static Command makeCommand(String command) {
 
-	public Command makeCommand(char command) {
-
-		if (Character.isDigit(command))
+		if (command.matches(digitPattern)) {
+			System.out.println(command);
 			return new DigitCommand(Double.parseDouble(command));
-
-		if (OperationMap.getCommandOperationMap().containsKey(Character.toString(command))){
-			return new OperationCommand(calculator, OperationMap.getCommandOperationMap().get(Character.toString(command)));
 		}
 
-		switch (command) {
+		if (OperationMap.getCommandOperationMap().containsKey(command)){
+			return new OperationCommand(OperationMap.getCommandOperationMap().get(command));
+		}
+
+		switch (command.charAt(0)) {
 		case 'c':
 			return new ClearCommand();
 		case 'q':
