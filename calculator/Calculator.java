@@ -2,9 +2,14 @@ package calculator;
 
 public interface Calculator {
 
-    double addition(double num1, double num2);
-    double subtraction(double num1, double num2);
-    double multiplication(double num1, double num2);
-    double division(double num1, double num2);
+	double push(double number);
+	double pop();
+	double stackSize();
+	String stackString();
+	
+    double addition();
+    double subtraction();
+    double multiplication();
+    double division();
 
 }

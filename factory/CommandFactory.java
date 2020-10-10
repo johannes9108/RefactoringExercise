@@ -19,7 +19,7 @@ public class CommandFactory {
 	public Command makeCommand(char command) {
 
 		if (Character.isDigit(command))
-			return new DigitCommand();
+			return new DigitCommand(Double.parseDouble(command));
 
 		if (OperationMap.getCommandOperationMap().containsKey(Character.toString(command))){
 			return new OperationCommand(calculator, OperationMap.getCommandOperationMap().get(Character.toString(command)));

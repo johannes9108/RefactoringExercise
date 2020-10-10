@@ -16,22 +16,20 @@ public class OperationCommand implements Command {
     }
 
     @Override
-    public void execute(String input, DoubleStack stack, UI ui) {
-        double num1 = stack.pop();
-        double num2 = stack.pop();
-        stack.push(operationResult(num1,num2,operation));
+    public void execute(String input, UI ui) {
+       operationResult(operation);
     }
 
-    private double operationResult(double num1, double num2, Operation operation) {
+    private double operationResult(Operation operation) {
         switch (operation) {
             case ADDITION:
-                return calculator.addition(num1, num2);
+                return calculator.addition();
             case SUBTRACTION:
-                return calculator.subtraction(num1, num2);
+                return calculator.subtraction();
             case MULTIPLICATION:
-                return calculator.multiplication(num1, num2);
+                return calculator.multiplication();
             case DIVISION:
-                return calculator.division(num1, num2);
+                return calculator.division();
             default:
                 return 0;
         }

@@ -9,7 +9,7 @@ public class RPNCalculatorController {
     private final UI ui;
     private final Calculator calculator;
     //ToDo fundera på om stacken hör hemma i Controller?
-    private final DoubleStack stack = new DoubleStack();
+
 
     public RPNCalculatorController(UI ui, Calculator calculator) {
         this.ui = ui;
@@ -20,23 +20,17 @@ public class RPNCalculatorController {
         CommandFactory commandFactory = new CommandFactory(calculator);
         while (true) {
             displayApplicationState();
-            String input = trimmedInputString();
+            String input = ui.trimmedInputString();
             Command command = commandFactory.makeCommand(input.charAt(0));
-            command.execute(input, stack, ui);
+            command.execute(calculator,ui);
         }
 
     }
 
-    private String trimmedInputString() {
-        String input = ui.getString().trim();
-        if (input.equals("")) {
-            input = " ";
-        }
-        return input;
-    }
+    
 
     private void displayApplicationState() {
-        if (stack.size() == 0) {
+        if (calculator.stackSize() == 0) {
             displayWhenStackIsEmpty();
         } else {
             displayWhenStackHasValues();
@@ -45,7 +39,7 @@ public class RPNCalculatorController {
 
     private void displayWhenStackHasValues() {
         ui.clear();
-        ui.addString(stack.toString());
+        ui.addString(calculator.stackString());
     }
 
     private void displayWhenStackIsEmpty() {
